@@ -17,14 +17,31 @@ $text-color: #dae6e6;
   gap: 20px;
 
   // Equivilent Width To All Divs
-  div {
+  > div {
     flex: 1;
   }
 
+  span {
+    display: block;
+  }
   // Rounded Images
   .imagesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    .imageMask {
+      clip-path: circle(0% at center);
+      overflow: hidden;
+    }
     img {
       border-radius: 50%;
+      transition: transform 0.4s ease-in-out;
+
+      &:hover {
+        transition: transform 0.4s ease-in-out;
+        transform: scale(1.1);
+      }
     }
   }
 }

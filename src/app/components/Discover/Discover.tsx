@@ -1,7 +1,55 @@
+"use client";
 import discover from "./discover.module.scss";
 import Link from "next/link";
+import { useRef, useEffect } from "react";
+import { RefObject } from "react";
+import { gsap } from "gsap/gsap-core";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Discover() {
+  // Reffernce For Animation
+  const textRef: RefObject<HTMLDivElement> | null = useRef(null);
+  const allLinks: RefObject<HTMLDivElement> | null = useRef(null);
+
+  useEffect(() => {
+    // Header Animation
+    gsap.fromTo(
+      textRef.current,
+      {
+        opacity: 0,
+        y: 40,
+      },
+      {
+        opacity: 1,
+        duration: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: textRef.current,
+        },
+      }
+    );
+
+    // Links Animation
+    if (allLinks.current)
+      gsap.fromTo(
+        allLinks.current.children,
+        {
+          opacity: 0,
+          y: 40,
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          y: 0,
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: allLinks.current.children,
+          },
+        }
+      );
+  }, []);
+
   const svgIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,10 +68,10 @@ export default function Discover() {
     // Container
     <div className={discover.container}>
       {/* Header */}
-      <h1>Discover innovation opportunities</h1>
+      <h1 ref={textRef}>Discover innovation opportunities</h1>
 
       {/* Navigation Container */}
-      <div className={discover.navigationContainer}>
+      <div ref={allLinks} className={discover.navigationContainer}>
         {/* Link 1 */}
         <div className={discover.linksContainer}>
           <Link href="/">Talents</Link>

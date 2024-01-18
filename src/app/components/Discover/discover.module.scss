@@ -51,6 +51,9 @@ $arrow-color: #f6fbfb;
       * {
         cursor: url("../../../../public/cursor/yellow-cursor.svg"), auto;
       }
+      svg {
+        transition: transform 0.4s ease-in-out;
+      }
 
       // On Hover Change Text , Background , Arrow Color
       &:hover {
@@ -62,6 +65,10 @@ $arrow-color: #f6fbfb;
         }
         path {
           fill: $yellow-color;
+        }
+        svg {
+          transition: transform 0.4s ease-in-out;
+          transform: rotate(-140deg);
         }
       }
     }

@@ -29,10 +29,23 @@ $dark-color: #2e3233;
 
   // Rounded Images
   .imagesContainer {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    position: relative;
+    .imageMask {
+      clip-path: circle(0% at center);
+      overflow: hidden;
+    }
     img {
       border-radius: 50%;
+      transition: transform 0.4s ease-in-out;
+
+      &:hover {
+        transition: transform 0.4s ease-in-out;
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -78,6 +91,7 @@ $dark-color: #2e3233;
   transition: all 2s ease-in;
   border-radius: 50%;
   img {
+    transition: none !important;
     width: 90px;
     height: 90px;
   }
