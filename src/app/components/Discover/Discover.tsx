@@ -1,6 +1,5 @@
 import discover from "./discover.module.scss";
 import Link from "next/link";
-import whiteArrow from "../../../../public/arrows/white-arrow.svg";
 
 export default function Discover() {
   const svgIcon = (

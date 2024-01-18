@@ -78,8 +78,8 @@ $dark-color: #2e3233;
   transition: all 2s ease-in;
   border-radius: 50%;
   img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
   }
 }
 
@@ -87,6 +87,7 @@ $dark-color: #2e3233;
   // Contnainer
   .container {
     flex-wrap: wrap;
+    gap: 20px;
 
     // Reset All Div FLex-Grow To 0
     div {
@@ -95,33 +96,26 @@ $dark-color: #2e3233;
 
     // Center Images And Make Them Rounded
     .imagesContainer {
-      margin-top: 5px;
-      margin: 5px auto 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      > img {
-        width: 75%;
-        height: 85%;
-        border-radius: 50%;
-        margin: 0 auto;
-        object-fit: cover;
-      }
+      width: 45%;
+      height: 45%;
+      border-radius: 50%;
+      margin: 0 auto;
     }
 
     // Center Text
     .textContainer {
       text-align: center;
+      padding: 0px 5px;
+      font-size: 16px;
     }
   }
 
   // Styling Overlay Circle
   .overlaycircle {
-    width: 75%;
-    height: 85%;
+    width: 100%;
+    height: 100%;
     left: 0;
     border-radius: 50%;
-    margin: 10px 30px;
 
     img {
       width: 50%;
