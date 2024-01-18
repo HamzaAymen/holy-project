@@ -1,0 +1,55 @@
+// Color Variables
+$text-color: #dae6e6;
+
+// First Row Container
+.container {
+  padding: 0px 32px;
+  color: #dae6e6;
+  font-family: Helvetica;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 96px;
+  letter-spacing: -1.92px;
+  text-transform: capitalize;
+  display: flex;
+  margin-bottom: 10px;
+  gap: 20px;
+
+  // Equivilent Width To All Divs
+  div {
+    flex: 1;
+  }
+
+  // Rounded Images
+  .imagesContainer {
+    img {
+      border-radius: 50%;
+    }
+  }
+}
+
+// Small Screns
+@media screen and (max-width: 1000px) {
+  .container {
+    flex-wrap: wrap;
+
+    // Remove Flex Grow
+    div {
+      flex: initial;
+    }
+
+    // Heading Take Full Row
+    .headingContainer {
+      width: 100%;
+      font-size: 60px;
+    }
+
+    // Two Images In One Row
+    .imagesContainer {
+      width: 45%;
+      height: 45%;
+      border-radius: 50%;
+    }
+  }
+}

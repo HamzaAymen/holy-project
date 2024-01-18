@@ -1,0 +1,80 @@
+// Color Variables
+$text-color: #dae6e6;
+$yellow-color: #eeff33;
+$dark-text: #2e3233;
+$arrow-color: #f6fbfb;
+
+// Container
+.container {
+  display: flex;
+  padding: 64px 32px 54px 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  color: $text-color;
+  gap: 96px;
+
+  // Header Styling
+  h1 {
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 96px; /* 100% */
+    letter-spacing: -1.92px;
+  }
+
+  // All Navigation Container
+  .navigationContainer {
+    width: 100%;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: -0.48px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    // Single Link Container
+    .linksContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid $text-color;
+
+      a {
+        width: 30%;
+      }
+
+      // Chnge Cursor
+      cursor: url("../../../../public/cursor/yellow-cursor.svg"), auto;
+      * {
+        cursor: url("../../../../public/cursor/yellow-cursor.svg"), auto;
+      }
+
+      // On Hover Change Text , Background , Arrow Color
+      &:hover {
+        border-color: $yellow-color;
+
+        a {
+          background-color: $yellow-color;
+          color: $dark-text;
+        }
+        path {
+          fill: $yellow-color;
+        }
+      }
+    }
+  }
+}
+
+// Small Screns
+@media screen and (max-width: 1000px) {
+  .container {
+    padding: 20px 15px;
+    gap: 15px;
+    h1 {
+      font-size: 60px;
+    }
+  }
+}
