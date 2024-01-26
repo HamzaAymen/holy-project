@@ -44,6 +44,18 @@ $arrow-color: #f6fbfb;
 
       a {
         width: 30%;
+        position: relative;
+      }
+      a::after {
+        content: "";
+        background: $yellow-color;
+        z-index: -1;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 0%;
+        height: 100%;
+        transition: width 0.4s ease-in;
       }
 
       // Chnge Cursor
@@ -60,15 +72,18 @@ $arrow-color: #f6fbfb;
         border-color: $yellow-color;
 
         a {
-          background-color: $yellow-color;
           color: $dark-text;
+        }
+        a::after {
+          width: 100%;
+          transition: width 0.4s ease-in;
         }
         path {
           fill: $yellow-color;
         }
         svg {
           transition: transform 0.4s ease-in-out;
-          transform: rotate(-140deg);
+          transform: rotate(-135deg);
         }
       }
     }
