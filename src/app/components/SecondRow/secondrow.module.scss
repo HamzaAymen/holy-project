@@ -102,6 +102,7 @@ $dark-color: #2e3233;
     align-items: center;
     transition: transform 2s ease-in;
     border-radius: 50%;
+    overflow: hidden;
 
     img {
       transition: none !important;

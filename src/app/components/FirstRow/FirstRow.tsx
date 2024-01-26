@@ -6,67 +6,12 @@ import ImagTwo from "../../../../public/hero-photography/Rectangle 205.png";
 import { useEffect, useRef, useState } from "react";
 import { RefObject } from "react";
 import { gsap } from "gsap/gsap-core";
-import BigArrow from "../../../../public/arrows/arrow.svg";
+import manageOverlay from "../utils/manageOverlay";
+import calculateMousePosition from "../utils/calculateMousePosition";
 
 type hoverObj = {
   firstImg: boolean;
   secondImg: boolean;
-};
-
-// Managing The Overlay Html
-function manageOverlay(
-  circleAttraction: { x: number; y: number },
-  rotate: number
-) {
-  return (
-    <div className={firstrow.overlayContainer}>
-      <div
-        className={firstrow.overlaycircle}
-        style={{
-          left: `${circleAttraction.x - 40}%`,
-          top: `${circleAttraction.y - 40}%`,
-        }}
-      ></div>
-      <Image
-        src={BigArrow}
-        alt="Arrow"
-        id="arrow"
-        style={{
-          transform: `rotate(${rotate - 180}deg)`,
-        }}
-      />
-    </div>
-  );
-}
-
-// Calculate Mouse Position For The Yellow Overlay
-const calculateMousePosition = (
-  e: React.MouseEvent,
-  setCircleAttraction: any,
-  setRotate: any
-) => {
-  const arrow = document.getElementById("arrow")!;
-  let containerRect = arrow?.getBoundingClientRect();
-  const { clientX, clientY } = e;
-
-  const centerX = containerRect?.left + containerRect?.width / 2;
-  const centerY = containerRect?.top + containerRect?.height / 2;
-  const angleRad = Math.atan2(clientY - centerY, clientX - centerX);
-  const angleDeg = (angleRad * 180) / Math.PI;
-  setRotate(angleDeg);
-
-  // Calculate The Move Of The Yellow Circle
-  const mouseXPercentage =
-    (clientX - containerRect?.left) / containerRect?.width;
-  const mouseYPercentage =
-    (clientY - containerRect?.top) / containerRect?.height;
-
-  // Calculate the new position based on the percentages
-  const newX = (mouseXPercentage - 0.5) * 20 + 50;
-  const newY = (mouseYPercentage - 0.5) * 20 + 50;
-
-  // Update the Yellow position state
-  setCircleAttraction({ x: newX, y: newY });
 };
 
 export default function FirstRow() {
@@ -158,7 +103,6 @@ export default function FirstRow() {
     <div className={firstrow.container}>
       {/* Heading */}
       <div className={firstrow.headingContainer}>
-        {/* <h1> greece the birthplace of ideas</h1> */}
         <h1 ref={textRef}>
           <span>Greece</span>
           <span>the</span>
@@ -175,7 +119,10 @@ export default function FirstRow() {
         }}
         onMouseLeave={removeOverlay}
       >
-        <div ref={firstImageMaskRef} className={firstrow.imageMask}>
+        <div
+          ref={firstImageMaskRef}
+          className={`${firstrow.imageMask} ${firstrow.cursortodark}`}
+        >
           <Image ref={firstImageRef} src={ImagOne} alt="hero-image" />
           {/* Overloy Circle On Hover */}
           {hoverd.firstImg && manageOverlay(circleAttraction, rotate)}
@@ -190,7 +137,10 @@ export default function FirstRow() {
         }}
         onMouseLeave={removeOverlay}
       >
-        <div ref={secondImageMaskRef} className={firstrow.imageMask}>
+        <div
+          ref={secondImageMaskRef}
+          className={`${firstrow.imageMask} ${firstrow.cursortodark}`}
+        >
           <Image ref={secondImageRef} src={ImagTwo} alt="hero-image" />
 
           {/* Overloy Circle On Hover */}
